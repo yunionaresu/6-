@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6点透視 立体生成ツール — Noisism Paradigm</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>6点透視 立体知覚基盤 // Noisism Interface</h1>
+  <p class="sub">暗喩的ノイズ干渉と消失点対拘束による多次元空間認知の実験</p>
+</header>
+
+<main>
+  <section class="stage">
+    <canvas id="cv" width="1200" height="760"></canvas>
+    <div id="quizUI" class="quiz-ui hidden">
+      <div class="quiz-label left">FIELD [A]</div>
+      <div class="quiz-label right">FIELD [B]</div>
+    </div>
+  </section>
+
+  <aside class="panel">
+    <section class="block">
+      <h2>// MORPHOLOGY (形態生成)</h2>
+      <div class="btn-row" id="modeRow">
+        <button data-mode="pebble" class="active">小石 (Pebble)</button>
+        <button data-mode="crystal">結晶 (Crystal)</button>
+        <button data-mode="compound">複合晶 (Compound)</button>
+      </div>
+      <button id="regen" class="primary">再構成 [NEW SEED]</button>
+      <div class="seed">RANDOM_SEED: <span id="seedLabel">-</span></div>
+    </section>
+
+    <section class="block">
+      <h2>// PERCEPTION (知覚可視化)</h2>
+      <label><input type="checkbox" id="showGrid"> 6消失点干渉グリッド</label>
+      <label><input type="checkbox" id="showBase" checked> 基準点および刻みストローク</label>
+      <label><input type="checkbox" id="colorFam"> 消失点ファミリー (XYZ別色相)</label>
+      <label><input type="checkbox" id="anim" checked> プロシージャル刻みアニメーション</label>
+      <button id="savePng">PNGエクスポート</button>
+    </section>
+
+    <section class="block quiz">
+      <h2>// A/B COGNITION TEST (検証モード)</h2>
+      <p class="note">一方は6点透視曲率を厳格保存、他方は消失点または弧を微小破綻させた造形。人間の視覚野が感知する「真のパースペクティブ」を選択してください。</p>
+      <div class="btn-row">
+        <select id="difficulty">
+          <option value="bend">幾何歪曲モード (線の弦への補間)</option>
+          <option value="shift">消失点偏位モード (VP座標の破壊)</option>
+        </select>
+      </div>
+      <button id="quizStart" class="primary">検証プロトコル開始</button>
+      <div class="btn-row" id="quizAnswerRow" style="display:none; margin-top:8px;">
+        <button id="ansLeft">A に感じる</button>
+        <button id="ansRight">B に感じる</button>
+        <button id="ansPass">判別不能</button>
+      </div>
+      <div id="quizFeedback" class="feedback"></div>
+      <div id="quizStats" class="stats"></div>
+    </section>
+
+    <section class="block about">
+      <h2>// NOISISM PERSPECTIVE THEORY</h2>
+      <p>球面幾何（6消失点）とノイジスムの統合：</p>
+      <ul>
+        <li><b>規則性ノイズ</b>: Bayerディザ構造と消失点に収束するパースペクティブ刻み</li>
+        <li><b>ランダムノイズ</b>: 粒子の散乱確率によるボリューム・深度の提示</li>
+        <li><b>フラクタルノイズ</b>: 空間の湾曲フィールドと質量密度の無意識知覚</li>
+      </ul>
+    </section>
+  </aside>
+</main>
+
+<script src="noise-engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
